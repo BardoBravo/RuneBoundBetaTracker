@@ -1,0 +1,126 @@
+extends layout
+
+block content
+    h1 RuneBound Tracker
+    p O tracker definitivo do jogo RuneBound
+    button#btnAdminMode Modo ADMIN 
+
+    // Wrapper
+    #wrapper
+
+        // USER INFO
+        #userInfo
+            h2 Conquistas
+            p
+                strong Nome:
+                |  <span id='userInfoName'></span>
+                br
+                strong Data:
+                |  <span id='userInfoAge'></span>
+                br
+                strong Pontos:
+                |  <span id='userInfoGender'></span>                
+        // /USER INFO
+
+        // USER LIST
+        h2 Partidas
+        #userList
+            table#games
+                thead
+                    th Partida
+                    th Vencedor
+                    th Cenário
+                    th Data
+                    th Qtde de Jogadores
+                    th Perdedores
+                    th Atrasados
+                    th Início
+                    th Fim
+                tbody
+        // /USER LIST      
+
+        // PLAYER PER GAME
+        #playerPerGame2.w3-hide
+            h2 Jogadores por partida
+            p
+                
+        // /PLAYER PER GAME
+
+        // ADD GAME
+        h2#addGameTitle.w3-hide Adicionar Partida
+        #addGame.w3-hide
+            fieldset               
+                label(for='inputGameWinner') Vencedor:&nbsp;
+                select#inputGameWinner.chosen-select_player
+                | &nbsp;&nbsp;&nbsp;&nbsp;
+                label(for='Cenário') Cenário:&nbsp;
+                select#inputGameScenario.chosen-select
+                br
+                label(for='Data') Data:&nbsp;
+                input#inputGameDate(type='date', placeholder='Data')
+                | &nbsp;&nbsp;&nbsp;&nbsp;
+                label(for='Hora Início') Hora Início:&nbsp;
+                input#inputGameBeginTime(type='time', placeholder='Hora Início')
+                | &nbsp;&nbsp;&nbsp;&nbsp;
+                label(for='Hora Fim') Hora Fim:&nbsp;
+                input#inputGameEndTime(type='time', placeholder='Hora Fim')
+                br                
+                label(for='Número de Jogadores') Número de Jogadores:&nbsp;
+                input#inputGameNumberOfPlayers(type='number' value='0')
+                br
+                label(for='Perdedores') Perdedores:&nbsp;
+                input#inputGameLosers(type='number' value='0')
+                | &nbsp;&nbsp;&nbsp;&nbsp;
+                label(for='Atrasados') Atrasados:&nbsp;
+                input#inputGameLaters(type='number' value='0')
+                br
+                button#btnAddGame Adicionar Partida                
+        // /ADD GAME
+
+        // ADD GAME
+        h2#addPlayerPerGameTitle.w3-hide Adicionar Jogador em uma Partida     
+        #addPlayerInGame.w3-hide
+            fieldset
+                label(for='inputGames') Partida:&nbsp;
+                select#inputGames.chosen-select_game_list(style='display: none')
+                | &nbsp;&nbsp;&nbsp;&nbsp;                
+                label(for='inputPlayer') Jogador:&nbsp;
+                select#inputPlayer.chosen-select_player(style='display: none')
+                | &nbsp;&nbsp;&nbsp;&nbsp;
+                label(for='inputChar') Personagem:&nbsp;
+                select#inputChar.chosen-select_char(style='display: none')
+                br
+                label(for='inputWeapon') Arma:&nbsp;
+                select#inputWeapon.chosen-select_equip(style='display: none')
+                br
+                label(for='inputCloth') Vestimenta:&nbsp;
+                select#inputCloth.chosen-select_equip(style='display: none')
+                br
+                label(for='inputGoods') Utensílio:&nbsp;
+                select#inputGoods.chosen-select_equip(style='display: none')
+                br
+                label(for='inputMove') Movimento:&nbsp;
+                select#inputMove.chosen-select_equip(style='display: none')
+                br
+                label(for='inputEquip') Equipamento:&nbsp;
+                select#inputEquip.chosen-select_equip(style='display: none')
+                br
+                label(for='inputAttackTurn') Turno de Ataque:&nbsp;
+                input#inputAttackTurn(type='number')
+                | &nbsp;&nbsp;&nbsp;&nbsp;
+                label(for='inputRemainingHP') HP restante:&nbsp;
+                input#inputRemainingHP(type='number' value='0')
+                br
+                label(for='inputSkillList') Skills:&nbsp;
+                select#inputSkillList.chosen-select_skill(style='display: none' multiple)
+                br
+                label(for='inputWinner') Vencedor?:&nbsp;
+                input#inputWinner(type='checkbox')
+                | &nbsp;&nbsp;&nbsp;&nbsp;
+                label(for='inputFoughtBoss') Enfrentou BOSS?:&nbsp;
+                input#inputFoughtBoss(type='checkbox')
+                br
+                button#btnAddPlayerInGame Adicionar Jogador na Partida                
+        // /ADD GAME        
+
+    // /WRAPPER
