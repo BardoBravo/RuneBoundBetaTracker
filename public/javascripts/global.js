@@ -139,7 +139,7 @@ function populatePlayerPerGameTable() {
             $.each(this.skills_in_game, function(){
                 divContent += '<div id="teste">';
                 //divContent += '<p class="w3-center"><strong>Utensílio:"' + this.name + '"</strong></p>';
-                divContent += '<p class="w3-center"><img id="goods" style="height:75%;width:75%" src="' + this.image + '"</img></span></p>';                
+                divContent += '<p class="w3-center"><img id="skills" style="height:75%;width:75%" src="' + this.image + '"</img></span></p>';                
                 divContent += '</div>';
             });
 
@@ -302,10 +302,12 @@ function addPlayerInGame(event) {
             'equipID': $('#addPlayerInGame fieldset select#inputEquip').val(),
             'attackTurn': $('#addPlayerInGame fieldset input#inputAttackTurn').val(),
             'remainingHP': $('#addPlayerInGame fieldset input#inputRemainingHP').val(),
-            'skillList': $('#addPlayerInGame fieldset input#inputSkillList').val(),
+            'skillList': $('#addPlayerInGame fieldset select#inputSkillList').chosen().val(),
             'winner': $('#addPlayerInGame fieldset input#inputWinner').val(),
             'foughtBoss': $('#addPlayerInGame fieldset input#inputFoughtBoss').val()
         }
+
+        alert(JSON.stringify(newPlayerInGame));
 
 
         // Use AJAX to post the object to our adduser service
