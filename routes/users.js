@@ -135,20 +135,20 @@ router.get('/playersList/', function(req, res) {
 	// 	res.json(docs);
 	// });
 
-	// var path = req.uri;
-	// req.MongoClient.connect(path, function(err, db) {
- //   		const collection = db.db("Runbound").collection("players");   
- //   		var cursor = collection.find({},{});   		
-	// 	cursor.toArray(function (err, data){
- //    	if(err) {
- //      		return console.log(err);
- //    	}
- //    		res.json(data);
- //   		} );
+	var path = req.uri;
+	req.MongoClient.connect(path, function(err, db) {
+   		const collection = db.db("Runbound").collection("players");   
+   		var cursor = collection.find({},{});   		
+		cursor.toArray(function (err, data){
+    	if(err) {
+      		return console.log(err);
+    	}
+    		res.json(data);
+   		} );
 
- //   		db.close();
+   		db.close();
 	
-	// });
+	});
 
 
 });
