@@ -128,11 +128,29 @@ router.get('/char/', function(req, res) {
 
 //players
 router.get('/playersList/', function(req, res) {
-	var db = req.db;
-	var collection = db.get('players');
-	collection.find({},{}, function(e,docs) {
-		res.json(docs);
-	});
+	//Version for local development
+	// var db = req.db;
+	// var collection = db.get('players');
+	// collection.find({},{}, function(e,docs) {
+	// 	res.json(docs);
+	// });
+
+	// var path = req.uri;
+	// req.MongoClient.connect(path, function(err, db) {
+ //   		const collection = db.db("Runbound").collection("players");   
+ //   		var cursor = collection.find({},{});   		
+	// 	cursor.toArray(function (err, data){
+ //    	if(err) {
+ //      		return console.log(err);
+ //    	}
+ //    		res.json(data);
+ //   		} );
+
+ //   		db.close();
+	
+	// });
+
+
 });
 
 //scenarios

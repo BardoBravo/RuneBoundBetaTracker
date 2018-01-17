@@ -13,6 +13,33 @@ db.options = {
   castIds : false
 };
 
+var MongoClient = require('mongodb').MongoClient;
+
+//var uri = "mongodb://claudiovtramos@gmail.com:Bardo001#@mycluster0-shard-00-00.mongodb.net:27017,mycluster0-shard-00-01.mongodb.net:27017,mycluster0-shard-00-02.mongodb.net:27017/admin?ssl=true&replicaSet=Mycluster0-shard-0&authSource=admin";
+var uri = "mongodb://bravobardo:CgbUynR8LbvHaIMb@cluster0-shard-00-00-ybdkk.mongodb.net:27017,cluster0-shard-00-01-ybdkk.mongodb.net:27017,cluster0-shard-00-02-ybdkk.mongodb.net:27017/Runbound?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin"
+MongoClient.connect(uri, function(err, db) {
+   const collection = db.db("Runbound").collection("players");
+   // perform actions on the collection object   
+   var cursor = collection.find({},{});   
+   cursor.count(function (err, num){
+    if(err) {
+      return console.log(err);
+    }
+    return console.log(num);
+   } );
+
+   cursor.toArray(function (err, data){
+    if(err) {
+      return console.log(err);
+    }
+    return console.log(data);
+   } );
+   //collection.findOne({ '_id' : '1'},{}, function(e,docs) {
+   // console.log(docs);
+  //});
+   db.close();
+});
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 
@@ -34,6 +61,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Make our db accessible to our router
 app.use(function(req,res,next){
     req.db = db;
+    req.MongoClient = MongoClient;
+    req.uri = uri;
     next();
 });
 
